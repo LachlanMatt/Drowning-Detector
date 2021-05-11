@@ -3,6 +3,7 @@ from cvlib.object_detection import draw_bbox
 import cv2
 import time
 import numpy as np
+from sys import exit
 #for PiCamera
 #from picamera Import PiCamera
 #camera = PiCamera
