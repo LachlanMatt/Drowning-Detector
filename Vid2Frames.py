@@ -40,15 +40,18 @@ for filename in importPics():
     success,image = vidcap.read()
     count = 0
     outputpath = "%s%s/" % (inputPath, foldername)
-    os.mkdir(outputpath)
-    os.mkdir(outputpath+"10x/")
-    while success:
-        cv2.imwrite("%s%s_f%d.jpg" % (outputpath, foldername, count), image)
-        if count%10==0:
-            cv2.imwrite("%s10x/%s_f%d.jpg" % (outputpath, foldername, count), image)
-        success,image = vidcap.read()
-        # print('Read a new fream: ', success)
-        count += 1
-    print("%s%s_f%d.jpg" % (outputpath, foldername, count))
-    print("\n")
-    break
+    try:
+        os.mkdir(outputpath)
+        os.mkdir(outputpath+"10x/")
+        while success:
+            cv2.imwrite("%s%s_f%d.jpg" % (outputpath, foldername, count), image)
+            if count%10==0:
+                cv2.imwrite("%s10x/%s_f%d.jpg" % (outputpath, foldername, count), image)
+            success,image = vidcap.read()
+            # print('Read a new fream: ', success)
+            count += 1
+        print("%s%s_f%d.jpg" % (outputpath, foldername, count))
+        print("\n")
+    except:
+        print("path already exists")
+    # break
